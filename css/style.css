@@ -24,18 +24,18 @@
 
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-size-h1: 48px;
-  --font-size-h2: 32px;
-  --font-size-h3: 24px;
-  --font-size-body: 18px;
-  --font-size-small: 16px;
+  --font-size-h1: 40px;
+  --font-size-h2: 28px;
+  --font-size-h3: 18px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
 
   /* Spacing */
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 24px;
-  --spacing-lg: 40px;
-  --spacing-xl: 80px;
+  --spacing-xs: 6px;
+  --spacing-sm: 12px;
+  --spacing-md: 20px;
+  --spacing-lg: 32px;
+  --spacing-xl: 60px;
 
   /* Layout */
   --max-width: 1200px;
@@ -166,19 +166,19 @@ nav {
 
 /* Hero Section */
 .hero {
-  padding: calc(var(--spacing-xl) * 2) 0;
+  padding: var(--spacing-xl) 0;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 64px;
-  margin-bottom: var(--spacing-sm);
+  font-size: 48px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .hero .tagline {
-  font-size: 28px;
+  font-size: 20px;
   color: var(--color-text-secondary-dark);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   font-weight: 400;
 }
 
@@ -209,11 +209,11 @@ nav {
 }
 
 .app-store-badge {
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
 }
 
 .app-store-badge img {
-  height: 60px;
+  height: 44px;
   transition: opacity 0.2s ease;
 }
 
@@ -233,25 +233,32 @@ nav {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
 }
 
 .feature-card {
   background-color: var(--color-surface-dark);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
   border-radius: var(--border-radius);
   transition: transform 0.2s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .feature-icon {
-  font-size: 40px;
-  margin-bottom: var(--spacing-sm);
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-accent);
+}
+
+.feature-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .feature-card h3 {
@@ -482,3 +489,128 @@ footer {
 .mb-2 { margin-bottom: var(--spacing-sm); }
 .mb-3 { margin-bottom: var(--spacing-md); }
 .mb-4 { margin-bottom: var(--spacing-lg); }
+
+/* ==========================================
+   Pitch Meter Component
+   ========================================== */
+.pitch-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.pitch-meter-svg {
+  width: 220px;
+  height: 132px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.meter-bg {
+  stroke: var(--color-surface-dark);
+}
+
+.meter-active {
+  opacity: 0.9;
+}
+
+.tick-marks line {
+  stroke: var(--color-text-secondary-dark);
+  stroke-width: 2;
+  opacity: 0.5;
+}
+
+.needle {
+  transform-origin: 150px 150px;
+  animation: needleSwing 4s ease-in-out infinite;
+}
+
+@keyframes needleSwing {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(5deg); }
+  60% { transform: rotate(-3deg); }
+  80% { transform: rotate(2deg); }
+}
+
+.note-text {
+  font-family: var(--font-family);
+  font-size: 36px;
+  font-weight: 700;
+  fill: var(--color-text-primary-dark);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.octave-text {
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 500;
+  fill: var(--color-text-secondary-dark);
+  dominant-baseline: middle;
+}
+
+.frequency-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.freq-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary-dark);
+  font-variant-numeric: tabular-nums;
+  animation: freqPulse 4s ease-in-out infinite;
+}
+
+@keyframes freqPulse {
+  0%, 100% { opacity: 1; }
+  20% { opacity: 0.9; }
+  40% { opacity: 1; }
+  60% { opacity: 0.95; }
+  80% { opacity: 1; }
+}
+
+.freq-unit {
+  font-size: 16px;
+  color: var(--color-text-secondary-dark);
+}
+
+.tune-status {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tune-status.in-tune {
+  background-color: rgba(51, 217, 140, 0.15);
+  color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(51, 217, 140, 0.2);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(51, 217, 140, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(51, 217, 140, 0.4);
+  }
+}
+
+/* Responsive pitch meter */
+@media (max-width: 480px) {
+  .pitch-meter-svg {
+    width: 240px;
+    height: 144px;
+  }
+
+  .freq-value {
+    font-size: 24px;
+  }
+}
