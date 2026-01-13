@@ -222,20 +222,20 @@ nav {
 }
 
 .app-screenshot {
-  width: 180px;
+  width: 360px;
   height: auto;
-  border-radius: 24px;
+  border-radius: 32px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero-showcase {
     flex-direction: column;
     gap: var(--spacing-md);
   }
 
   .app-screenshot {
-    width: 140px;
+    width: 280px;
   }
 }
 
@@ -532,8 +532,8 @@ footer {
 }
 
 .pitch-meter-svg {
-  width: 220px;
-  height: 132px;
+  width: 440px;
+  height: 264px;
   margin-bottom: var(--spacing-xs);
 }
 
@@ -566,7 +566,7 @@ footer {
 
 .note-text {
   font-family: var(--font-family);
-  font-size: 36px;
+  font-size: 56px;
   font-weight: 700;
   fill: var(--color-text-primary-dark);
   text-anchor: middle;
@@ -575,7 +575,7 @@ footer {
 
 .octave-text {
   font-family: var(--font-family);
-  font-size: 16px;
+  font-size: 28px;
   font-weight: 500;
   fill: var(--color-text-secondary-dark);
   dominant-baseline: middle;
@@ -589,7 +589,7 @@ footer {
 }
 
 .freq-value {
-  font-size: 22px;
+  font-size: 36px;
   font-weight: 600;
   color: var(--color-text-primary-dark);
   font-variant-numeric: tabular-nums;
@@ -637,11 +637,11 @@ footer {
 /* Responsive pitch meter */
 @media (max-width: 480px) {
   .pitch-meter-svg {
-    width: 240px;
-    height: 144px;
+    width: 300px;
+    height: 180px;
   }
 
   .freq-value {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
