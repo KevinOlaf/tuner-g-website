@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tuner-G - Precision Guitar Tuning for iOS">
     <meta property="og:description" content="Professional-grade chromatic tuner for guitar, bass, and ukulele">
-    <meta property="og:url" content="https://tunerg.app">
+    <meta property="og:url" content="https://tunerg.master-tempo.com">
 
     <title>Tuner-G - Precision Guitar Tuning for iOS</title>
     <link rel="stylesheet" href="css/style.css">
@@ -34,6 +34,64 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <!-- Animated Pitch Meter -->
+            <div class="pitch-meter">
+                <svg viewBox="0 0 300 180" class="pitch-meter-svg">
+                    <!-- Background arc -->
+                    <path class="meter-bg" d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke-width="20" stroke-linecap="round"/>
+
+                    <!-- Gradient definitions -->
+                    <defs>
+                        <linearGradient id="meterGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#FF6B6B"/>
+                            <stop offset="30%" stop-color="#FFB347"/>
+                            <stop offset="50%" stop-color="#33D98C"/>
+                            <stop offset="70%" stop-color="#FFB347"/>
+                            <stop offset="100%" stop-color="#FF6B6B"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- Active arc with gradient -->
+                    <path class="meter-active" d="M30 150 A120 120 0 0 1 270 150" fill="none" stroke="url(#meterGradient)" stroke-width="20" stroke-linecap="round"/>
+
+                    <!-- Tick marks -->
+                    <g class="tick-marks">
+                        <line x1="50" y1="145" x2="50" y2="130"/>
+                        <line x1="90" y1="100" x2="100" y2="112"/>
+                        <line x1="150" y1="70" x2="150" y2="85"/>
+                        <line x1="210" y1="100" x2="200" y2="112"/>
+                        <line x1="250" y1="145" x2="250" y2="130"/>
+                    </g>
+
+                    <!-- Center indicator needle -->
+                    <g class="needle" filter="url(#glow)">
+                        <line x1="150" y1="150" x2="150" y2="55" stroke="#33D98C" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="150" cy="150" r="12" fill="#33D98C"/>
+                        <circle cx="150" cy="150" r="6" fill="#212123"/>
+                    </g>
+
+                    <!-- Note display -->
+                    <text x="150" y="125" class="note-text">A</text>
+                    <text x="170" y="118" class="octave-text">4</text>
+                </svg>
+
+                <!-- Frequency display -->
+                <div class="frequency-display">
+                    <span class="freq-value">440.0</span>
+                    <span class="freq-unit">Hz</span>
+                </div>
+
+                <!-- In-tune indicator -->
+                <div class="tune-status in-tune">In Tune</div>
+            </div>
+
             <h1>Tuner-G</h1>
             <p class="tagline">Precision Guitar Tuning for iOS</p>
             <p class="subtitle">
@@ -41,11 +99,10 @@
                 Accurate pitch detection with a clean, intuitive interface.
             </p>
 
-            <!-- App Store Badge Placeholder -->
+            <!-- App Store Badge -->
             <div class="app-store-badge">
-                <a href="#" aria-label="Download on the App Store">
-                    <!-- Will be replaced with actual App Store badge after submission -->
-                    <button class="cta-button">Coming Soon to App Store</button>
+                <a href="https://apps.apple.com/us/app/tuner-g/id6757263863" aria-label="Download on the App Store">
+                    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" height="50">
                 </a>
             </div>
         </div>
@@ -56,9 +113,16 @@
         <div class="container">
             <h2>Features</h2>
             <div class="features-grid">
-                <!-- Feature 1 -->
+                <!-- Feature 1: Accurate Pitch Detection -->
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/>
+                            <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                            <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+                            <circle cx="24" cy="24" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3>Accurate Pitch Detection</h3>
                     <p>
                         Advanced YIN and PYIN algorithms provide professional-grade accuracy
@@ -66,9 +130,17 @@
                     </p>
                 </div>
 
-                <!-- Feature 2 -->
+                <!-- Feature 2: Multiple Instruments -->
                 <div class="feature-card">
-                    <div class="feature-icon">🎸</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8C16 6.89543 16.8954 6 18 6H30C31.1046 6 32 6.89543 32 8V14H16V8Z" stroke="currentColor" stroke-width="2.5"/>
+                            <rect x="14" y="14" width="20" height="28" rx="3" stroke="currentColor" stroke-width="2.5"/>
+                            <circle cx="24" cy="32" r="5" stroke="currentColor" stroke-width="2"/>
+                            <line x1="18" y1="20" x2="30" y2="20" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="18" y1="24" x2="30" y2="24" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                        </svg>
+                    </div>
                     <h3>Multiple Instruments & Tunings</h3>
                     <p>
                         Support for guitar, bass, and ukulele with standard, drop, and open tunings.
@@ -76,9 +148,16 @@
                     </p>
                 </div>
 
-                <!-- Feature 3 -->
+                <!-- Feature 3: Beautiful Interface -->
                 <div class="feature-card">
-                    <div class="feature-icon">✨</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="10" width="36" height="28" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M12 24 A12 12 0 0 1 36 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="24" y1="32" x2="24" y2="20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="32" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3>Beautiful Interface</h3>
                     <p>
                         Clean neumorphic design with visual pitch gauge, waveform display,
@@ -86,9 +165,15 @@
                     </p>
                 </div>
 
-                <!-- Feature 4 -->
+                <!-- Feature 4: Customizable Settings -->
                 <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M24 6V12M24 36V42M42 24H36M12 24H6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M36.7 11.3L32.5 15.5M15.5 32.5L11.3 36.7M36.7 36.7L32.5 32.5M15.5 15.5L11.3 11.3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <h3>Customizable Settings</h3>
                     <p>
                         Adjust reference pitch (A4), sensitivity levels, detection algorithms,
@@ -96,9 +181,16 @@
                     </p>
                 </div>
 
-                <!-- Feature 5 -->
+                <!-- Feature 5: Reference Tone Generator -->
                 <div class="feature-card">
-                    <div class="feature-icon">🔊</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 18V30C8 31.1 8.9 32 10 32H14L24 40V8L14 16H10C8.9 16 8 16.9 8 18Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M30 18C32 20 32 28 30 30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M34 14C38 18 38 30 34 34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M38 10C44 16 44 32 38 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+                        </svg>
+                    </div>
                     <h3>Reference Tone Generator</h3>
                     <p>
                         Play reference tones for any string to tune by ear.
@@ -106,9 +198,13 @@
                     </p>
                 </div>
 
-                <!-- Feature 6 -->
+                <!-- Feature 6: Support with Tips -->
                 <div class="feature-card">
-                    <div class="feature-icon">🎁</div>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L28.5 16.5H42L31 25L35.5 38L24 29L12.5 38L17 25L6 16.5H19.5L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <h3>Support with Tips</h3>
                     <p>
                         Enjoy ad-free experience by supporting development with optional tips.
@@ -124,7 +220,7 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <p class="copyright">&copy; 2026 Tuner-G. All rights reserved.</p>
+                    <p class="copyright">&copy; 2025 Master-Tempo. All rights reserved.</p>
                     <p style="margin-top: 8px; font-size: 14px; color: #A8A8A8;">
                         Also check out: <a href="https://master-tempo.com" style="color: #33D98C;">Beat-Master</a> - Professional metronome app
                     </p>
